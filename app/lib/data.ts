@@ -18,6 +18,7 @@ export async function fetchRevenue() {
 
     console.log("Fetching revenue data...");
     await new Promise((resolve) => setTimeout(resolve, 3000));
+    await sql`select pg_sleep(2);`;
 
     const data = await sql<Revenue[]>`SELECT * FROM revenue`;
 
