@@ -8,6 +8,7 @@ import {
   Revenue,
 } from "./definitions";
 import { formatCurrency } from "./utils";
+import { unstable_noStore as noStore } from "next/cache";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
@@ -33,6 +34,7 @@ export async function fetchRevenue() {
 
 export async function fetchLatestInvoices() {
   try {
+    noStore();
     const data = await sql<LatestInvoiceRaw[]>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
