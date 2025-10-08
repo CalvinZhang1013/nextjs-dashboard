@@ -1,7 +1,8 @@
 import Markdown from "react-markdown";
 import Spinner from "./Spinner";
-import userIcon from "@/public/user.svg";
-import errorIcon from "@/public/error.svg";
+import Image from "next/image";
+import userLogo from "@/public/user.png";
+import errorLogo from "@/public/error.png";
 
 export type Role = "user" | "assistant" | "system";
 
@@ -34,10 +35,12 @@ export default function ChatMessages({
           }`}
         >
           {role === "user" && (
-            <img
-              className="h-[26px] w-[26px] shrink-0"
-              src={userIcon}
-              alt="user"
+            <Image
+              src={userLogo}
+              alt="Example"
+              width={50}
+              height={50}
+              priority
             />
           )}
           <div>
@@ -56,7 +59,13 @@ export default function ChatMessages({
                   content && "mt-2"
                 }`}
               >
-                <img className="h-5 w-5" src={errorIcon} alt="error" />
+                <Image
+                  src={errorLogo}
+                  alt="Example"
+                  width={50}
+                  height={50}
+                  priority
+                />
                 <span>Error generating the response</span>
               </div>
             )}

@@ -1,5 +1,6 @@
 // import useAutosize from "@/hooks/useAutosize";
-import sendIcon from "@/public/send.svg";
+import Image from "next/image";
+import sendLogo from "@/public/send.png";
 
 function ChatInput({ newMessage, isLoading, setNewMessage, submitNewMessage }) {
   //   const textareaRef = useAutosize(newMessage);
@@ -27,7 +28,13 @@ function ChatInput({ newMessage, isLoading, setNewMessage, submitNewMessage }) {
             className="absolute top-1/2 -translate-y-1/2 right-3 p-1 rounded-md hover:bg-primary-blue/20"
             onClick={submitNewMessage}
           >
-            <img src={sendIcon} alt="send" />
+            <Image
+              src={sendLogo}
+              alt="Example"
+              width={30}
+              height={30}
+              priority
+            />
           </button>
         </div>
       </div>
