@@ -3,7 +3,25 @@ import Spinner from "./Spinner";
 import userIcon from "@/public/user.svg";
 import errorIcon from "@/public/error.svg";
 
-export default function ChatMessages({ messages, isLoading }) {
+export type Role = "user" | "assistant" | "system";
+
+export interface Message {
+  id: string; // unique id for stable React keys
+  role: Role;
+  content?: string | null; // could be null while streaming/loading
+  loading?: boolean;
+  error?: string | boolean | null; // can hold error message or true
+}
+
+interface ChatMessagesProps {
+  messages: Message[];
+  isLoading?: boolean; // overall loading indicator (optional)
+}
+
+export default function ChatMessages({
+  messages,
+  isLoading = false,
+}: ChatMessagesProps) {
   //   const scrollContentRef = useAutoScroll(isLoading);
 
   return (

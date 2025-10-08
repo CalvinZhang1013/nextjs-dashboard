@@ -147,7 +147,7 @@ export async function createChat() {
   return data;
 }
 
-export async function sendChatMessage(chatId, message) {
+export async function sendChatMessage(chatId: string, message: string) {
   const res = await fetch(BASE_URL + `/chats/${chatId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
